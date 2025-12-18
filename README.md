@@ -55,15 +55,15 @@ Now run:
 - npm install
 - npx playwright install
 
-Environment variables
+**Environment variables**
 
 This project uses environment variables to manage login credentials.
 A .env file is not committed to the repository and should be created locally when running the tests on your machine.
 
 Create a .env file in the project root with the following values:
-BRIGHTHR_BASE_URL=<URL>
-BRIGHTHR_EMAIL=<username>
-BRIGHTHR_PASSWORD=<password>
+BRIGHTHR_BASE_URL=\<url\>
+BRIGHTHR_EMAIL=\<username\>
+BRIGHTHR_PASSWORD=\<password\>
 
 ### Running Tests
 
