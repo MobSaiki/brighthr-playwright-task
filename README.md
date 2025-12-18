@@ -9,6 +9,7 @@ This repository contains an automated test solution for the BrightHR QA Automati
 The task consists of two main steps:
 
 ### Step 1 – Manual Setup
+
 - Visit: https://sandbox-app.brighthr.com/lite
 - Create a free BrightHR account manually
 
@@ -48,7 +49,7 @@ Follow these steps to run the BrightHR Playwright tests on a new machine.
 
 Make sure the following are installed:
 
-- **Node.js** 
+- **Node.js**
 
 Now run:
 
@@ -67,12 +68,12 @@ BRIGHTHR_PASSWORD=\<password\>
 
 ### Running Tests
 
-To run all tests in headless mode: 
+To run all tests in headless mode:
+
 - npm run test
 
 To view Allure test report:
+
 - npm run allure:generate
 
 To run tests on Chrome/Edge uncomment relevant lines in **playwright.config.ts**
-
-
