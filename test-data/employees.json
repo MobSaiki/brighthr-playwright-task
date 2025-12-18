@@ -1,0 +1,51 @@
+{
+  "employees": {
+    "johnDoe": {
+      "firstName": "John",
+      "lastName": "Doe",
+      "jobTitle": "Engineer",
+      "phoneNumber": "07123456789",
+      "sendRegistrationEmail": true,
+      "startDate": "2025-12-16"
+    },
+    "janeSmith": {
+      "firstName": "Jane",
+      "lastName": "Smith",
+      "jobTitle": "Manager",
+      "phoneNumber": "07987654321",
+      "sendRegistrationEmail": false,
+      "startDate": "2025-12-17"
+    },
+    "invalidEmployee": {
+      "firstName": "Invalid",
+      "lastName": "Email",
+      "email": "invalid-email",
+      "sendRegistrationEmail": false,
+      "phoneNumber": "07123456789",
+      "startDate": "2025-12-17",
+      "jobTitle": "Tester"
+    }
+  },
+  "labels": {
+    "navigationLabel": "main navigation",
+    "firstNameLabel": "first name",
+    "lastNameLabel": "last name",
+    "phoneNumberLabel": "phone number",
+    "jobTitleLabel": "job title"
+  },
+  "elementNames": {
+    "employeesLink": "employees",
+    "addEmployeeButton": "add employee",
+    "addAnotherEmployeeButton": "add another employee",
+    "emailField": "email address",
+    "saveButton": "Save new employee",
+    "closeModalButton": "close modal",
+    "successHeading": "success! new employee added"
+  },
+  "locators": {
+    "startDatePicker": "#startDate",
+    "dateTestId": "input-selector",
+    "sendRegistrationEmailCheckbox": "inputRight",
+    "sendRegistrationEmailCheckboxLabel": "checkboxLabel"
+  }
+}

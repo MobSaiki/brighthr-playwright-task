@@ -1,0 +1,12 @@
+{
+  "labels": {
+    "emailLabel": "email",
+    "passwordLabel": "password"
+  },
+  "elementNames": {
+    "loginButton": "login"
+  },
+  "urls": {
+    "dashboardUrl": "/dashboard"
+  }
+}
