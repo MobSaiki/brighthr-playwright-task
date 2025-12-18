@@ -120,7 +120,9 @@ export class EmployeesPage {
     await this.page.getByRole("gridcell", { name: dayToSelect }).click();
   }
 
-  private async setSendRegistrationEmail(shouldBeChecked: boolean): Promise<void> {
+  private async setSendRegistrationEmail(
+    shouldBeChecked: boolean,
+  ): Promise<void> {
     const isChecked = await this.sendRegistrationCheckbox.isChecked();
     if (isChecked !== shouldBeChecked) {
       await this.sendRegistrationCheckboxLabel.click();
