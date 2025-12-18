@@ -22,7 +22,10 @@ export class EmployeesPage {
   private readonly jobTitleInput: Locator;
   private readonly startDateControl: Locator;
   private readonly closeAddEmployeeButton: Locator;
-  readonly saveButton: Locator;
+  private readonly saveButton: Locator;
+  private readonly successHeading: Locator;
+  private readonly sendRegistrationCheckbox: Locator;
+  private readonly sendRegistrationCheckboxLabel: Locator;
 
   constructor(private readonly page: Page) {
     this.employeesNavLink = page
@@ -60,11 +63,19 @@ export class EmployeesPage {
     this.closeAddEmployeeButton = page.getByRole("button", {
       name: new RegExp(employeeData.elementNames.closeModalButton, "i"),
     });
+    this.successHeading = page.getByRole("heading", {
+      name: new RegExp(employeeData.elementNames.successHeading, "i"),
+    });
+    this.sendRegistrationCheckbox = page.getByTestId(
+      employeeData.locators.sendRegistrationEmailCheckbox,
+    );
+    this.sendRegistrationCheckboxLabel = page.getByTestId(
+      employeeData.locators.sendRegistrationEmailCheckboxLabel,
+    );
   }
 
   async openAddEmployeeForm(): Promise<void> {
     await this.employeesNavLink.click();
-    await this.page.waitForURL(/\/employee-hub/i);
     await expect(this.addEmployeeButton).toBeVisible();
     await this.addEmployeeButton.click();
   }
@@ -87,10 +98,7 @@ export class EmployeesPage {
   async submitEmployeeForm(): Promise<void> {
     await expect(this.saveButton).toBeEnabled();
     await this.saveButton.click();
-    const successHeading = this.page.getByRole("heading", {
-      name: new RegExp(employeeData.elementNames.successHeading, "i"),
-    });
-    await expect(successHeading).toBeVisible();
+    await expect(this.successHeading).toBeVisible();
   }
 
   async closeAddEmployeeForm(): Promise<void> {
@@ -112,25 +120,20 @@ export class EmployeesPage {
     await this.page.getByRole("gridcell", { name: dayToSelect }).click();
   }
 
-  private async setSendRegistrationEmail(
-    shouldBeChecked: boolean,
-  ): Promise<void> {
-    const sendRegistrationEmailCheckbox = this.page.getByTestId(
-      employeeData.locators.sendRegistrationEmailCheckbox,
-    );
-    const sendRegistrationEmailCheckboxLabel = this.page.getByTestId(
-      employeeData.locators.sendRegistrationEmailCheckboxLabel,
-    );
-
-    const isChecked = await sendRegistrationEmailCheckbox.isChecked();
+  private async setSendRegistrationEmail(shouldBeChecked: boolean): Promise<void> {
+    const isChecked = await this.sendRegistrationCheckbox.isChecked();
     if (isChecked !== shouldBeChecked) {
-      await sendRegistrationEmailCheckboxLabel.click();
+      await this.sendRegistrationCheckboxLabel.click();
     }
 
     if (shouldBeChecked) {
-      await expect(sendRegistrationEmailCheckbox).toBeChecked();
+      await expect(this.sendRegistrationCheckbox).toBeChecked();
     } else {
-      await expect(sendRegistrationEmailCheckbox).not.toBeChecked();
+      await expect(this.sendRegistrationCheckbox).not.toBeChecked();
     }
+  }
+
+  async expectSaveDisabled(): Promise<void> {
+    await expect(this.saveButton).toBeDisabled();
   }
 }

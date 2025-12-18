@@ -1,4 +1,4 @@
-import { test, expect } from "@playwright/test";
+import { test } from "@playwright/test";
 import { LoginPage } from "../pages/login.page";
 import { EmployeesPage, type Employee } from "../pages/employees.page";
 import employeeData from "../test-data/employees.json";
@@ -68,5 +68,5 @@ test("Cannot add employee with invalid email address", async ({ page }) => {
   };
 
   await employeesPage.fillEmployeeForm(invalidEmployee);
-  await expect(employeesPage.saveButton).toBeDisabled();
+  await employeesPage.expectSaveDisabled();
 });
